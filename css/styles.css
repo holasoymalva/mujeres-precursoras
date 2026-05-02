@@ -1,52 +1,73 @@
+@import url('https://fonts.cdnfonts.com/css/tex-gyre-termes');
+
 :root {
-    --bg-color: #f4f3ef; /* Fondo claro, ligeramente cálido y elegante */
-    --text-color: #2c2c2c; /* Gris muy oscuro para el texto principal */
-    --highlight-color: #7b42f6; /* Violeta/Púrpura vibrante para resaltar */
-    --font-serif: 'Playfair Display', serif;
+    --bg-color: #f6f5ef;
+    --text-color: #2b2b2b;
+    --highlight-color: #8c52ff; 
+    --font-serif: 'TeX Gyre Termes', 'Times New Roman', serif;
 }
 
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     background-color: var(--bg-color);
     font-family: var(--font-serif);
-    overflow-x: hidden; /* Evitar scroll horizontal en la intro */
-    scroll-behavior: smooth;
+    color: var(--text-color);
+    overflow-x: hidden;
 }
 
-#app {
+/* Proxy para permitir scroll vertical nativo del navegador */
+#scroll-proxy {
+    /* Altura será inyectada por JS dinámicamente */
     width: 100%;
-    /* Altura será manejada por JS después para el scroll horizontal, 
-       pero por ahora mantenemos lo básico */
+}
+
+/* Contenedor fijo a la ventana */
+.fixed-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Wrapper que se mueve de derecha a izquierda */
+.horizontal-wrapper {
+    display: flex;
+    height: 100vh;
+    width: max-content;
+    will-change: transform;
+}
+
+/* Paneles individuales */
+.panel {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* --- SECCIÓN DE INTRODUCCIÓN --- */
 .intro-section {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background: radial-gradient(circle at center, #ffffff 0%, var(--bg-color) 100%);
-    overflow: hidden;
 }
 
 .intro-text {
     z-index: 10;
     text-align: center;
-    pointer-events: none; /* Para que los clicks no interfieran con animaciones o imágenes */
+    pointer-events: none;
 }
 
 .intro-text h1 {
     font-size: clamp(3rem, 6vw, 6rem);
     font-weight: 400;
     line-height: 1.1;
-    color: var(--text-color);
     margin: 0;
-    letter-spacing: -0.02em;
     text-shadow: 0 4px 30px rgba(255, 255, 255, 0.9);
 }
 
@@ -58,7 +79,6 @@ body, html {
     margin-top: -10px;
 }
 
-/* --- CONTENEDOR DE IMÁGENES --- */
 .image-container {
     position: absolute;
     top: 0;
@@ -73,16 +93,16 @@ body, html {
     max-width: 200px;
     max-height: 250px;
     object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     opacity: 0;
     filter: blur(20px);
     transform: scale(0.8) translateY(20px);
-    transition: opacity 2s ease, filter 2s ease, transform 4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: opacity 2s ease, filter 2s ease, transform 4s ease-out;
 }
 
 .floating-image.visible {
-    opacity: 0.9;
+    opacity: 0.8;
     filter: blur(0px);
     transform: scale(1) translateY(0);
 }
@@ -113,7 +133,6 @@ body, html {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--text-color);
 }
 
 .mouse {
@@ -140,23 +159,159 @@ body, html {
     0% { top: 6px; opacity: 1; }
     100% { top: 18px; opacity: 0; }
 }
-
 @keyframes bounce {
     0%, 100% { transform: translate(-50%, 0); }
     50% { transform: translate(-50%, 10px); }
 }
 
-/* --- SECCIÓN TIMELINE (Placeholder para siguientes pasos) --- */
-.timeline-section {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
+/* --- TIMELINE --- */
+.timeline-container {
+    width: auto; /* Se expandirá según el contenido inyectado por JS */
+    min-width: 100vw;
+    padding: 0 10vw; /* Espaciado a los lados */
     align-items: center;
-    background-color: #eae8e1; /* Diferenciador visual temporal */
+    justify-content: flex-start;
 }
 
-.timeline-content h2 {
-    font-size: 3rem;
-    color: var(--text-color);
+.timeline-track {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 60vh;
+    gap: 10vw;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(43, 43, 43, 0.2);
+    z-index: 0;
+    transform: translateY(-50%);
+}
+
+.timeline-node {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateX(100px); /* Efecto de que entran por la derecha */
+    transition: opacity 1s ease-out, filter 1s ease-out, transform 1s ease-out;
+}
+
+/* Clases de animación aplicadas por JS durante el scroll */
+.timeline-node.in-view {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(0);
+}
+
+.timeline-node.passed {
+    opacity: 0.3;
+    filter: blur(10px);
+    transform: translateX(-100px);
+}
+
+.node-point {
+    width: 16px;
+    height: 16px;
+    background-color: var(--highlight-color);
+    border-radius: 50%;
+    margin: 20px 0;
+    box-shadow: 0 0 15px var(--highlight-color);
+}
+
+/* Alternancia visual: arriba o abajo de la línea */
+.timeline-node.top .node-content {
+    order: -1;
+    margin-bottom: 20px;
+}
+.timeline-node.bottom .node-content {
+    margin-top: 20px;
+}
+
+.node-content {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.node-content img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: block; /* Ocultaremos esto si no hay imagen en JS */
+}
+
+.node-period {
+    font-size: 0.85rem;
+    color: var(--highlight-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.node-title {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    font-style: italic;
+}
+
+.node-desc {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    color: #4a4a4a;
+}
+
+.node-desc ul {
+    margin: 5px 0 0 0;
+    padding-left: 20px;
+}
+
+/* --- FINAL PANEL --- */
+.final-panel {
+    width: 100vw;
+}
+
+.final-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 40px;
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(0.9);
+    transition: opacity 1.5s ease, filter 1.5s ease, transform 1.5s ease;
+}
+
+.final-content.in-view {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1);
+}
+
+.final-content h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.final-content p {
+    font-size: 2rem;
+    font-style: italic;
 }
