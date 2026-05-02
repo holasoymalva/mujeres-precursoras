@@ -39,6 +39,7 @@ body, html {
     height: 100vh;
     width: max-content;
     will-change: transform;
+    background-color: var(--bg-color); /* Fondo base consistente para todas las secciones */
 }
 
 /* Paneles individuales */
@@ -54,7 +55,8 @@ body, html {
 
 /* --- SECCIÓN DE INTRODUCCIÓN --- */
 .intro-section {
-    background: radial-gradient(circle at center, #ffffff 0%, var(--bg-color) 100%);
+    /* Resplandor central sutil que se desvanece antes de llegar a los bordes */
+    background: radial-gradient(circle at center, #ffffff 0%, transparent 80%);
 }
 
 .intro-text {
@@ -342,4 +344,60 @@ body, html {
 .final-content p {
     font-size: 2rem;
     font-style: italic;
+}
+
+/* --- RESPONSIVE / MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    /* Ajustes generales para móvil */
+    .intro-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .intro-text .highlight {
+        font-size: 3.5rem;
+    }
+
+    /* Imágenes flotantes más pequeñas en móvil */
+    .floating-image {
+        max-width: 120px;
+        max-height: 150px;
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Ajustes para los nodos de la línea del tiempo */
+    .timeline-node {
+        width: 280px;
+    }
+
+    .node-content {
+        padding: 15px;
+    }
+
+    .node-title {
+        font-size: 1.2rem;
+    }
+
+    .node-desc {
+        font-size: 0.9rem;
+    }
+
+    /* Panel final optimizado para móvil */
+    .final-content {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .final-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .final-content p {
+        font-size: 1.4rem;
+    }
+
+    /* Evitar que las imágenes tapen demasiado el texto final en móvil */
+    #final-image-container {
+        opacity: 0.5;
+    }
 }
