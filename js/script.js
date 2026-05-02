@@ -1,5 +1,79 @@
 document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
+       0. EFECTO INTERACTIVO DE TEXTO (INTRO)
+       ========================================= */
+    const introTitle = document.querySelector('.intro-text h1');
+    if (introTitle) {
+        // Función recursiva para separar cada letra en un span sin romper HTML (<br>, <span>, etc.)
+        const walk = (node) => {
+            if (node.nodeType === 3) { // Nodo de texto
+                const text = node.nodeValue;
+                if (!text.trim()) return; // Ignorar nodos que son solo espacios
+                
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < text.length; i++) {
+                    const char = text[i];
+                    if (char === ' ') {
+                        fragment.appendChild(document.createTextNode(' '));
+                    } else {
+                        const span = document.createElement('span');
+                        span.textContent = char;
+                        span.className = 'hover-char';
+                        fragment.appendChild(span);
+                    }
+                }
+                node.parentNode.replaceChild(fragment, node);
+            } else if (node.nodeType === 1 && node.nodeName !== 'BR') {
+                Array.from(node.childNodes).forEach(walk);
+            }
+        };
+        
+        Array.from(introTitle.childNodes).forEach(walk);
+
+        // Lógica de deformación por proximidad
+        const chars = introTitle.querySelectorAll('.hover-char');
+        document.addEventListener('mousemove', (e) => {
+            // El scroll proxy puede estar activo, pero el wrapper horizontal se mueve con translate.
+            // Para la pantalla de intro, al inicio, el ratón en la pantalla coincide perfectamente.
+            // (Esta sección generalmente desaparece al hacer scroll, pero usamos clientX/Y que son coordenadas de pantalla)
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            chars.forEach(char => {
+                const rect = char.getBoundingClientRect();
+                const charX = rect.left + rect.width / 2;
+                const charY = rect.top + rect.height / 2;
+                
+                const dx = mouseX - charX;
+                const dy = mouseY - charY;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                
+                const maxDist = 120; // Radio del efecto "imán/repulsión"
+                
+                if (dist < maxDist) {
+                    const intensity = 1 - (dist / maxDist);
+                    const safeDist = dist || 1;
+                    
+                    // Empujar la letra ligeramente, rotarla y desenfocarla
+                    const pushX = -(dx / safeDist) * 20 * intensity;
+                    const pushY = -(dy / safeDist) * 20 * intensity;
+                    const rot = (dx / maxDist) * 40 * intensity; 
+                    const blur = 8 * intensity;
+                    
+                    char.style.transform = `translate(${pushX}px, ${pushY}px) rotate(${rot}deg) scale(${1 + 0.3 * intensity})`;
+                    char.style.filter = `blur(${blur}px)`;
+                    char.style.opacity = 1 - (0.4 * intensity);
+                } else {
+                    // Estado normal
+                    char.style.transform = `translate(0px, 0px) rotate(0deg) scale(1)`;
+                    char.style.filter = `blur(0px)`;
+                    char.style.opacity = 1;
+                }
+            });
+        });
+    }
+
+    /* =========================================
        1. LÓGICA DE IMÁGENES FLOTANTES EN INTRO
        ========================================= */
     const images = [
