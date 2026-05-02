@@ -124,18 +124,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalContent = document.querySelector('.final-content');
 
     function updateHeights() {
-        // La altura del proxy debe ser el ancho total del wrapper para simular el scroll 1:1
-        // Restamos el ancho de la ventana porque el final del contenido debe coincidir con el final del scroll
         const scrollWidth = horizontalWrapper.scrollWidth;
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
         
         scrollProxy.style.height = `${scrollWidth - windowWidth + windowHeight}px`;
+        drawWavyLine(); // Dibujar línea cuando tenemos las medidas reales
+    }
+
+    function drawWavyLine() {
+        const svg = document.getElementById('timeline-svg');
+        const pathBg = document.getElementById('timeline-path-bg');
+        const pathFg = document.getElementById('timeline-path');
+        const maskPath = document.getElementById('mask-path');
+        
+        if (!svg || !maskPath) return;
+
+        // Usamos el ancho completo del track + un extra para que no se corte al final
+        const width = timelineTrack.scrollWidth + window.innerWidth;
+        
+        const amplitude = 60; // Altura de las olas
+        const period = window.innerWidth * 0.6; // Distancia entre crestas
+        const centerY = 200; // Centro vertical dentro del SVG de 400px
+        
+        let d = `M 0 ${centerY} `;
+        for (let x = 0; x < width; x += period) {
+            d += `Q ${x + period/4} ${centerY - amplitude}, ${x + period/2} ${centerY} `;
+            d += `T ${x + period} ${centerY} `;
+        }
+        
+        pathBg.setAttribute('d', d);
+        pathFg.setAttribute('d', d);
+        maskPath.setAttribute('d', d);
+        
+        // Configurar máscara para la animación
+        const length = maskPath.getTotalLength();
+        maskPath.style.strokeDasharray = length;
+        maskPath.style.strokeDashoffset = length;
+        
+        svg.style.width = `${width}px`;
     }
 
     // Actualizar dimensiones al cargar y al redimensionar
     window.addEventListener('resize', updateHeights);
-    setTimeout(updateHeights, 100); // Dar tiempo a que las imágenes carguen sus dimensiones
+    setTimeout(updateHeights, 200); // Dar tiempo a que las imágenes carguen sus dimensiones
 
     // Manejar el evento de scroll nativo
     window.addEventListener('scroll', () => {
@@ -143,6 +175,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Mover el wrapper horizontalmente
         horizontalWrapper.style.transform = `translateX(-${scrollY}px)`;
+
+        // Animar el revelado de la línea ondulada
+        const maskPath = document.getElementById('mask-path');
+        if (maskPath) {
+            const length = maskPath.getTotalLength();
+            // Calculamos cuánto ha avanzado el track. Restamos el ancho inicial de la intro (aprox window.innerWidth)
+            // Añadimos un margen (window.innerWidth * 0.8) para que la línea se dibuje "por delante" de donde miramos
+            let revealWidth = scrollY - window.innerWidth + (window.innerWidth * 0.8);
+            if (revealWidth < 0) revealWidth = 0;
+            
+            const trackWidth = timelineTrack.scrollWidth;
+            let ratio = revealWidth / trackWidth;
+            if (ratio > 1) ratio = 1;
+            
+            maskPath.style.strokeDashoffset = length - (length * ratio);
+        }
 
         // Calcular qué elementos están a la vista para aplicar los efectos blur/fade
         const viewportCenter = scrollY + (window.innerWidth / 2);

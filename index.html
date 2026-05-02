@@ -34,8 +34,18 @@
             <section class="panel timeline-container">
                 <!-- Se inyectarán dinámicamente los nodos aquí -->
                 <div id="timeline-track" class="timeline-track">
-                    <!-- Línea decorativa central -->
-                    <div class="timeline-line"></div>
+                    <!-- Línea decorativa ondulada -->
+                    <svg id="timeline-svg" class="timeline-svg" preserveAspectRatio="none">
+                        <defs>
+                            <mask id="draw-mask">
+                                <path id="mask-path" fill="none" stroke="white" stroke-width="40" />
+                            </mask>
+                        </defs>
+                        <!-- Línea base semi-transparente -->
+                        <path id="timeline-path-bg" class="timeline-path-bg" d="" />
+                        <!-- Línea activa morada que se revela -->
+                        <path id="timeline-path" class="timeline-path" d="" mask="url(#draw-mask)" />
+                    </svg>
                 </div>
             </section>
             
