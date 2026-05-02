@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "src/intro/safo.jpg"
     ];
 
-    const imageContainer = document.getElementById('image-container');
+    const imageContainerIntro = document.getElementById('image-container');
+    const imageContainerFinal = document.getElementById('final-image-container');
 
     const safeZones = [
         { x: [5, 25], y: [5, 25] },   { x: [75, 90], y: [5, 25] },
@@ -23,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { x: [5, 15], y: [40, 60] },  { x: [85, 95], y: [40, 60] }
     ];
 
-    function spawnImage() {
-        if (!imageContainer) return;
+    function spawnImage(container) {
+        if (!container) return;
         const imgSrc = images[Math.floor(Math.random() * images.length)];
         const img = document.createElement('img');
         img.src = imgSrc;
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.style.left = `calc(${x}vw - 100px)`; 
         img.style.top = `calc(${y}vh - 125px)`;
         
-        imageContainer.appendChild(img);
+        container.appendChild(img);
         void img.offsetWidth;
         
         setTimeout(() => img.classList.add('visible'), 100);
@@ -50,14 +51,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }, visibleTime);
         
         setTimeout(() => {
-            if (imageContainer.contains(img)) imageContainer.removeChild(img);
+            if (container.contains(img)) container.removeChild(img);
         }, visibleTime + 2500);
     }
 
-    spawnImage();
-    setTimeout(spawnImage, 800);
-    setTimeout(spawnImage, 1600);
-    setInterval(spawnImage, 2000);
+    // Inicializar para la intro
+    if (imageContainerIntro) {
+        spawnImage(imageContainerIntro);
+        setTimeout(() => spawnImage(imageContainerIntro), 800);
+        setTimeout(() => spawnImage(imageContainerIntro), 1600);
+        setInterval(() => spawnImage(imageContainerIntro), 2000);
+    }
+
+    // Inicializar para el final
+    if (imageContainerFinal) {
+        spawnImage(imageContainerFinal);
+        setTimeout(() => spawnImage(imageContainerFinal), 800);
+        setTimeout(() => spawnImage(imageContainerFinal), 1600);
+        setInterval(() => spawnImage(imageContainerFinal), 2000);
+    }
 
     /* =========================================
        2. DATOS DE LA LÍNEA DEL TIEMPO
