@@ -119,8 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const x = Math.random() * (zone.x[1] - zone.x[0]) + zone.x[0];
         const y = Math.random() * (zone.y[1] - zone.y[0]) + zone.y[0];
 
-        img.style.left = `calc(${x}vw - 100px)`;
-        img.style.top = `calc(${y}vh - 125px)`;
+        const isMobile = window.innerWidth <= 768;
+        const offsetWidth = isMobile ? 60 : 100;
+        const offsetHeight = isMobile ? 75 : 125;
+
+        img.style.left = `calc(${x}vw - ${offsetWidth}px)`;
+        img.style.top = `calc(${y}vh - ${offsetHeight}px)`;
 
         container.appendChild(img);
         void img.offsetWidth;
@@ -205,12 +209,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalContent = document.querySelector('.final-content');
 
     function updateHeights() {
+        // Aseguramos que el contenedor horizontal no tenga scroll interno
+        horizontalWrapper.style.width = 'max-content';
+        
         const scrollWidth = horizontalWrapper.scrollWidth;
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
 
-        scrollProxy.style.height = `${scrollWidth - windowWidth + windowHeight}px`;
-        drawWavyLine(); // Dibujar línea cuando tenemos las medidas reales
+        // Calculamos el scroll necesario para que el final del contenido coincida con el final de la pantalla
+        const totalScroll = Math.max(0, scrollWidth - windowWidth);
+        scrollProxy.style.height = `${totalScroll + windowHeight}px`;
+        
+        drawWavyLine();
     }
 
     function drawWavyLine() {
