@@ -77,14 +77,24 @@ document.addEventListener('DOMContentLoaded', () => {
        1. LÓGICA DE IMÁGENES FLOTANTES EN INTRO
        ========================================= */
     const images = [
+        "src/intro/34fcdd6b-3236-4f7b-b97b-8b7c45333c39_source-aspect-ratio_1600w_0.jpg",
         "src/intro/Hildegard_von_Bingen.jpg",
         "src/intro/St-Hildegard.webp",
+        "src/intro/Venus_von_Willendorf_01.jpg",
         "src/intro/_118494533_aspasia-arriba-2.jpg",
         "src/intro/aspasia.jpg",
+        "src/intro/christine-pizan.jpg",
         "src/intro/descarga.jpg",
         "src/intro/enheduanna-seated-woman.jpg",
         "src/intro/images (1).jpeg",
         "src/intro/images.jpeg",
+        "src/intro/linea-041.jpg",
+        "src/intro/linea-051.jpeg",
+        "src/intro/linea-061.jpg",
+        "src/intro/linea-071.jpeg",
+        "src/intro/linea-081.png",
+        "src/intro/linea-091.jpeg",
+        "src/intro/linea-101.jpg",
         "src/intro/safo.jpg"
     ];
 
