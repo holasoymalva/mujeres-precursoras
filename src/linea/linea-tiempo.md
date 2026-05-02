@@ -118,20 +118,6 @@
 
 ---
 
-## ⚖️ EDAD MODERNA Y REVOLUCIÓN (s. XVIII)
-
-### ⚔️ 1748–1793 — Olympe de Gouges
-
-* Declaración de los derechos de la mujer.
-* Ejecutada durante la Revolución Francesa.
-
-### 📚 1759–1797 — Mary Wollstonecraft
-
-* *Vindicación de los derechos de la mujer*.
-* Base del feminismo moderno.
-
----
-
 ## 🔥 CONTRARREFORMA Y PERSECUCIÓN (s. XV–XVII)
 
 * **Malleus Maleficarum (Martillo de las brujas)**:
