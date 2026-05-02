@@ -71,6 +71,14 @@ body, html {
     text-shadow: 0 4px 30px rgba(255, 255, 255, 0.9);
 }
 
+.hover-char {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                filter 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                opacity 0.4s ease;
+    will-change: transform, filter;
+}
+
 .intro-text .highlight {
     font-style: italic;
     color: var(--highlight-color);
