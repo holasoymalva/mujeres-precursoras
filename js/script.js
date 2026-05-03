@@ -163,25 +163,22 @@ document.addEventListener('DOMContentLoaded', () => {
        2. DATOS DE LA LÍNEA DEL TIEMPO
        ========================================= */
     const timelineData = [
-        { period: "PREHISTORIA Y NEOLÍTICO", title: "Culto a la Gran Diosa", desc: "<ul><li>Sociedades con estructuras matriarcales o matricéntricas.</li><li>Representaciones de divinidades femeninas (Marija Gimbutas).</li></ul>", image: "src/linea/linea-011.jpeg" },
+        { period: "PREHISTORIA Y NEOLÍTICO", title: "Culto a la Gran Diosa", desc: "<ul><li>Sociedades con estructuras matriarcales o matricéntricas.</li><li>Representaciones de divinidades femeninas (Marija Gimbutas).</li></ul>", image: "src/linea/linea-011.jpg" },
         { period: "ANTIGÜEDAD (2300 a.C. – 400 d.C.)", title: "Enheduana (Sumeria)", desc: "<ul><li>Primera autora de la historia con nombre conocido.</li><li>Primer texto firmado individualmente en tablillas cuneiformes.</li></ul>", image: "src/linea/linea-021.webp" },
         { period: "ANTIGÜEDAD", title: "Safo de Mitilene (Grecia)", desc: "<ul><li>Figura central de la poesía lírica y el pensamiento femenino.</li><li>Origen del linaje intelectual y creativo de las mujeres.</li></ul>", image: "src/linea/linea-031.jpg" },
         { period: "ANTIGÜEDAD", title: "Aspasia de Mileto", desc: "<ul><li>Intelectual, estratega y maestra de retórica en Atenas.</li><li>Símbolo de la invisibilización del pensamiento tras figuras masculinas.</li></ul>", image: "src/linea/linea-041.jpg" },
         { period: "ANTIGÜEDAD", title: "Hiparquía", desc: "<ul><li>Filósofa cínica que rechazó radicalmente las normas de género.</li><li>Ruptura con el modelo de mujer doméstica de la época.</li></ul>", image: "src/linea/linea-051.jpeg" },
         { period: "PROTOCRISTIANISMO (S. I–III)", title: "María Magdalena y Evangelizadoras", desc: "<ul><li>Figuras de autoridad espiritual (Magdalena, Tecla, María de Nazareth).</li><li>Liderazgo femenino posteriormente deslegitimado por el patriarcado.</li></ul>", image: "src/linea/linea-061.jpg" },
         { period: "EDAD MEDIA (S. IX)", title: "Kassia de Constantinopla", desc: "<ul><li>Primera compositora con notación musical conservada.</li><li>Poetisa que enfrentó el poder imperial desde la cultura.</li></ul>", image: "src/linea/linea-071.jpeg" },
-        { period: "EDAD MEDIA (S. XI)", title: "Trota de Salerno", desc: "<ul><li>Primera ginecóloga documentada de la historia.</li><li>Tratados de medicina escritos desde una perspectiva femenina.</li></ul>", image: "" },
-        { period: "EDAD MEDIA (S. XII)", title: "Hildegarda de Bingen", desc: "<ul><li>Mística, científica y compositora visionaria.</li><li>El monasterio como espacio de autonomía y creación intelectual.</li></ul>", image: "src/linea/linea-081.png" },
-        { period: "EDAD MEDIA", title: "Iluminadoras y Trobairitz", desc: "<ul><li>Mujeres creadoras de manuscritos (Guda, Ende) y poetisas provenzales.</li><li>Ruptura del modelo de amor cortés y visibilidad artística.</li></ul>", image: "" },
-        { period: "EDAD MEDIA (S. XII–XIII)", title: "Beguinas y Sororidad", desc: "<ul><li>Comunidades autónomas de mujeres (Hadewijch, Marguerite Porete).</li><li>Clara de Asís y la primera regla monástica escrita por una mujer.</li></ul>", image: "" },
-        { period: "TRANSICIÓN (S. XIV–XV)", title: "Christine de Pizan", desc: "<ul><li>Primera escritora profesional; inició 'La Querella de las Mujeres'.</li><li>Defensa de la educación femenina como herramienta de libertad.</li></ul>", image: "src/linea/linea-091.jpeg" },
-        { period: "TRANSICIÓN", title: "Juana de Arco", desc: "<ul><li>Liderazgo militar y transgresión de roles de género.</li><li>Ejecutada como castigo a su autonomía e influencia política.</li></ul>", image: "" },
-        { period: "RENACIMIENTO (S. XV–XVI)", title: "Puellae Doctae", desc: "<ul><li>Mujeres humanistas (Beatriz Galindo, Teresa de Cartagena).</li><li>Marie de Gournay y la defensa de la igualdad de los sexos.</li></ul>", image: "src/linea/linea-101.jpg" },
-        { period: "SIGLO XVII", title: "Juana Inés de la Cruz", desc: "<ul><li>La 'Décima Musa' mexicana; defensora del derecho al conocimiento.</li><li>Crítica a la 'necedad' de los hombres y la opresión conventual.</li></ul>", image: "" },
-        { period: "PERSECUCIÓN (S. XV–XVII)", title: "Caza de Brujas", desc: "<ul><li>Eliminación sistemática de mujeres sabias, parteras y autónomas.</li><li>El 'Malleus Maleficarum' como base ideológica del feminicidio.</li></ul>", image: "" },
-        { period: "SIGLO XVIII", title: "Olympe de Gouges", desc: "<ul><li>Autora de la Declaración de los Derechos de la Mujer y de la Ciudadana.</li><li>Primera mártir del feminismo moderno en la Revolución Francesa.</li></ul>", image: "" },
-        { period: "SIGLO XVIII", title: "Mary Wollstonecraft", desc: "<ul><li>'Vindicación de los derechos de la mujer'.</li><li>Argumentó que la falta de educación causaba la supuesta inferioridad.</li></ul>", image: "" },
-        { period: "SIGLO XX", title: "Marija Gimbutas y Simone de Beauvoir", desc: "<ul><li>Relectura de la prehistoria y crítica estructural a la opresión.</li><li>'No se nace mujer, se llega a serlo'.</li></ul>", image: "" }
+        { period: "EDAD MEDIA (S. XI)", title: "Trota de Salerno", desc: "<ul><li>Primera ginecóloga documentada de la historia.</li><li>Tratados de medicina escritos desde una perspectiva femenina.</li></ul>", image: "src/linea/linea-081.jpeg" },
+        { period: "EDAD MEDIA (S. XII)", title: "Hildegarda de Bingen", desc: "<ul><li>Mística, científica y compositora visionaria.</li><li>El monasterio como espacio de autonomía y creación intelectual.</li></ul>", image: "src/linea/linea-091.jpeg" },
+        { period: "EDAD MEDIA", title: "Iluminadoras y Trobairitz", desc: "<ul><li>Mujeres creadoras de manuscritos (Guda, Ende) y poetisas provenzales.</li><li>Ruptura del modelo de amor cortés y visibilidad artística.</li></ul>", image: "src/linea/linea-101.jpeg" },
+        { period: "EDAD MEDIA (S. XII–XIII)", title: "Beguinas y Sororidad", desc: "<ul><li>Comunidades autónomas de mujeres (Hadewijch, Marguerite Porete).</li><li>Clara de Asís y la primera regla monástica escrita por una mujer.</li></ul>", image: "src/linea/linea-111.webp" },
+        { period: "TRANSICIÓN (S. XIV–XV)", title: "Christine de Pizan", desc: "<ul><li>Primera escritora profesional; inició 'La Querella de las Mujeres'.</li><li>Defensa de la educación femenina como herramienta de libertad.</li></ul>", image: "src/linea/linea-121.jpeg" },
+        { period: "TRANSICIÓN", title: "Juana de Arco", desc: "<ul><li>Liderazgo militar y transgresión de roles de género.</li><li>Ejecutada como castigo a su autonomía e influencia política.</li></ul>", image: "src/linea/linea-131.avif" },
+        { period: "RENACIMIENTO (S. XV–XVI)", title: "Puellae Doctae", desc: "<ul><li>Mujeres humanistas (Beatriz Galindo, Teresa de Cartagena).</li><li>Marie de Gournay y la defensa de la igualdad de los sexos.</li></ul>", image: "src/linea/linea-141.jpg" },
+        { period: "SIGLO XVII", title: "Juana Inés de la Cruz", desc: "<ul><li>La 'Décima Musa' mexicana; defensora del derecho al conocimiento.</li><li>Crítica a la 'necedad' de los hombres y la opresión conventual.</li></ul>", image: "src/linea/linea-151.jpeg" },
+        { period: "PERSECUCIÓN (S. XV–XVII)", title: "Caza de Brujas", desc: "<ul><li>Eliminación sistemática de mujeres sabias y parteras.</li><li>El 'Malleus Maleficarum' como base ideológica del feminicidio.</li></ul>", image: "src/linea/linea-161.webp" }
     ];
 
     const timelineTrack = document.getElementById('timeline-track');
@@ -220,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateHeights() {
         // Aseguramos que el contenedor horizontal no tenga scroll interno
         horizontalWrapper.style.width = 'max-content';
-        
+
         const scrollWidth = horizontalWrapper.scrollWidth;
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
@@ -228,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculamos el scroll necesario para que el final del contenido coincida con el final de la pantalla
         const totalScroll = Math.max(0, scrollWidth - windowWidth);
         scrollProxy.style.height = `${totalScroll + windowHeight}px`;
-        
+
         drawWavyLine();
     }
 
