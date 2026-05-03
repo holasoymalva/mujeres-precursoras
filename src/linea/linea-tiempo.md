@@ -34,7 +34,7 @@
 ### Aspasia de Mileto (c. 470–400 a.C.)
 
 * Intelectual, estratega y maestra de retórica.
-* Representa la invisibilización del pensamiento femenino detrás de figuras masculinas.
+* Invisibilización del pensamiento femenino tras figuras masculinas.
 
 ---
 
@@ -57,7 +57,7 @@
 ## 🎼 Kassia (810–867, Constantinopla)
 
 * Primera compositora con notación conservada.
-* Resistencia intelectual frente al poder imperial.
+* Resistencia frente al poder imperial.
 
 ---
 
@@ -71,23 +71,23 @@
 ## 🎶 Hildegarda de Bingen (1098–1179)
 
 * Mística, compositora, científica.
-* Monasterios como espacios ambiguos: control + poder femenino.
+* Monasterios: espacios de control y poder femenino.
 
 ---
 
 ## 📚 Herrada de Landsberg (1125–1195)
 
 * Autora de *Hortus Deliciarum*.
-* Primera enciclopedia creada por mujeres.
-* Espacios de **sororidad intelectual temprana**.
+* Primera enciclopedia realizada por mujeres.
+* Producción colectiva femenina en espacios de clausura.
 
 ---
 
 ## 🎨 SIGLOS X–XV — ILUMINADORAS MEDIEVALES
 
 * Mujeres creadoras de manuscritos iluminados.
-* Invisibilizadas por el dominio masculino del *scriptorium*.
-* Evidencia arqueológica: **lapislázuli en huesos**.
+* Excluidas del *scriptorium* masculino.
+* Evidencia arqueológica: lapislázuli en huesos.
 
 ### Ejemplos:
 
@@ -98,16 +98,15 @@
 * Diemudis
 * María Albizzi
 
-➡️ Arte como **acto de resistencia silenciosa**
-
 ---
 
-## 🎵 SIGLOS XII–XIII — TROBAIRITZ (Provenza)
+## 🎵 SIGLOS XII–XIII — TROBAIRITZ
 
-* Mujeres trovadoras → ruptura del modelo de amor cortés.
-* Disrupción del rol pasivo femenino.
+* Juglaresas y trovadoras provenzales.
+* Ruptura del modelo de amor cortés heteropatriarcal.
+* Producción poética femenina (cansó, trobar leu, trobar clus).
 
-### Figuras clave:
+### Figuras:
 
 * Beatriz de Día
 * Tibors de Sarenom
@@ -115,16 +114,12 @@
 * Azalais de Porcairagues
 * Maria de Ventadorn
 
-➡️ Consideradas:
-
-> “Las otras hijas de Safo y madres de Christine de Pizan”
-
 ---
 
 ## 👩‍👩‍👧 SIGLOS XII–XIII — BEGUINAS
 
 * Comunidades autónomas de mujeres.
-* Vida espiritual, intelectual y económica independiente.
+* Vida espiritual e intelectual fuera del control masculino.
 * Perseguidas por la Iglesia.
 
 ### Figuras:
@@ -132,13 +127,11 @@
 * Hadewijch de Amberes
 * Matilde de Magdeburgo
 * Beatriz de Nazareth
-* Marguerite de Porete (ejecutada)
-
-➡️ Primera alternativa real de **vida libre femenina**
+* Marguerite de Porete
 
 ---
 
-## 👩‍⚕️ SIGLO IV + XII — COMUNIDADES DE SORORIDAD
+## 👩‍⚕️ COMUNIDADES DE SORORIDAD
 
 ### Matronas romanas (s. IV)
 
@@ -147,7 +140,7 @@
 ### Clara de Asís (1194–1253)
 
 * Primera regla monástica femenina.
-* Fundadora del concepto de **sororidad institucional**.
+* Organización de vida comunitaria entre mujeres.
 
 ---
 
@@ -157,14 +150,14 @@
 
 * Primera escritora profesional.
 * Inicia **La Querella de las Mujeres**.
-* Defiende educación y ciudadanía femenina.
+* Defensa de educación y voz pública femenina.
 
 ---
 
 ## 🔥 Juana de Arco (1412–1431)
 
-* Símbolo de agencia femenina.
-* Ejecutada → violencia institucional contra mujeres.
+* Liderazgo militar femenino.
+* Ejecución como castigo a la autonomía.
 
 ---
 
@@ -181,7 +174,7 @@ Ejemplos:
 
 ## 📖 Marie de Gournay (1565–1645)
 
-* Defensa explícita de igualdad de género.
+* Defensa de la igualdad entre hombres y mujeres.
 
 ---
 
@@ -202,8 +195,7 @@ Ejemplos:
 
 ## 📕 Malleus Maleficarum
 
-* Instrumento ideológico de control.
-* Justificación de violencia contra mujeres.
+* Tratado ideológico de control sobre la mujer.
 
 ---
 
@@ -212,11 +204,11 @@ Ejemplos:
 ## ⚔️ Olympe de Gouges (1748–1793)
 
 * Declaración de los derechos de la mujer.
-* Ejecutada.
+* Ejecutada durante la Revolución Francesa.
 
 ## 📚 Mary Wollstonecraft (1759–1797)
 
-* Fundadora del feminismo filosófico moderno.
+* Vindicación de los derechos de la mujer.
 
 ---
 
@@ -224,7 +216,7 @@ Ejemplos:
 
 ## 🏺 Marija Gimbutas
 
-* Reinterpretación de sociedades prehistóricas.
+* Reinterpretación de culturas prehistóricas.
 
 ## 📖 Simone de Beauvoir
 
@@ -234,4 +226,4 @@ Ejemplos:
 
 ## 🧩 IDEA CENTRAL DE LA LÍNEA DEL TIEMPO
 
-> La historia de las mujeres no es fragmentada, sino un **continuum de resistencia, pensamiento y creación**, constantemente invisibilizado y reescrito.
+> La historia de las mujeres es un **continuum de resistencia, pensamiento y creación**.
