@@ -323,10 +323,68 @@ document.addEventListener('DOMContentLoaded', () => {
             const finalRect = finalContent.getBoundingClientRect();
             if (finalRect.left < window.innerWidth * 0.8) {
                 finalContent.classList.add('in-view');
+                startFinalPhrases(); // Iniciar rotación de frases
             } else {
                 finalContent.classList.remove('in-view');
             }
         }
     });
+
+    /* =========================================
+       4. LÓGICA DE FRASES DINÁMICAS (FINAL)
+       ========================================= */
+    const finalPhrases = [
+        "\"El hombre define a la mujer no en sí misma, sino con relación a él.\" – Simone de Beauvoir (1949)",
+        "\"Si los hombres son capaces de aprender, ¿por qué no las mujeres?\" – Christine de Pizan (La ciudad de las damas, c. 1405)",
+        "\"¿Quién ha prohibido a las mujeres estudiar?\" – Sor Juana Inés de la Cruz (Respuesta a Sor Filotea, 1691)",
+        "\"Yo no estudio para saber más, sino para ignorar menos.\" – Sor Juana Inés de la Cruz (s. XVII)",
+        "\"La mujer nace libre y permanece igual al hombre en derechos.\" – Olympe de Gouges (Declaración de los Derechos de la Mujer y la Ciudadana, 1791)",
+        "\"No deseo que las mujeres tengan poder sobre los hombres, sino sobre sí mismas.\" – Mary Wollstonecraft (Vindicación de los derechos de la mujer, 1792)",
+        "\"Yo soy mía.\" – Hiparquía (atribuido en fuentes clásicas sobre su vida, s. IV a.C.)",
+        "\"Algunos dicen que una tropa de jinetes es lo más bello... yo digo que es aquello que uno ama.\" – Safo de Mitilene (Fragmento 16, s. VII–VI a.C.)",
+        "\"Yo, Enheduana, exalto a la diosa Inanna.\" – Enheduana (Himnos, c. 2300 a.C.)",
+        "\"Las mujeres son capaces de razón tanto como los hombres.\" – Marie de Gournay (Igualdad de hombres y mujeres, 1622)",
+        "\"No soy ni Eva ni María: soy yo misma.\" – (atribuido al pensamiento beguino, Marguerite de Porete, s. XIII–XIV, interpretación basada en El espejo de las almas simples)"
+    ];
+
+    let currentPhraseIndex = 0;
+    let phraseInterval = null;
+    const quoteElement = document.getElementById('phrase-quote');
+    const contextElement = document.getElementById('phrase-context');
+
+    function updatePhrase() {
+        if (!quoteElement || !contextElement) return;
+
+        const phrase = finalPhrases[currentPhraseIndex];
+        const parts = phrase.split(' – ');
+        const quote = parts[0];
+        const context = parts.slice(1).join(' – ');
+
+        // Fase de salida
+        quoteElement.classList.remove('phrase-visible');
+        contextElement.classList.remove('phrase-visible');
+        quoteElement.classList.add('phrase-hidden');
+        contextElement.classList.add('phrase-hidden');
+
+        setTimeout(() => {
+            // Actualizar contenido
+            quoteElement.textContent = quote;
+            contextElement.textContent = context || "";
+
+            // Fase de entrada
+            quoteElement.classList.remove('phrase-hidden');
+            contextElement.classList.remove('phrase-hidden');
+            quoteElement.classList.add('phrase-visible');
+            contextElement.classList.add('phrase-visible');
+
+            currentPhraseIndex = (currentPhraseIndex + 1) % finalPhrases.length;
+        }, 1500); // Coincide con la duración de la transición CSS
+    }
+
+    function startFinalPhrases() {
+        if (phraseInterval) return; // Ya está corriendo
+        updatePhrase(); // Primera actualización inmediata
+        phraseInterval = setInterval(updatePhrase, 7000); // Cambiar cada 7 segundos
+    }
 
 });

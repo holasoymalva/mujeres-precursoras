@@ -346,6 +346,49 @@ body, html {
     font-style: italic;
 }
 
+/* --- DYNAMIC PHRASES --- */
+.dynamic-phrase-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 200px;
+    justify-content: center;
+}
+
+.phrase-quote {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+.phrase-context {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: var(--highlight-color);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.phrase-quote, .phrase-context {
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                filter 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, filter, transform;
+}
+
+.phrase-quote.phrase-hidden, .phrase-context.phrase-hidden {
+    opacity: 0;
+    filter: blur(25px);
+    transform: scale(0.98) translateY(10px);
+}
+
+.phrase-quote.phrase-visible, .phrase-context.phrase-visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1) translateY(0);
+}
+
+
 /* --- RESPONSIVE / MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
     /* Ajustes generales para móvil */
