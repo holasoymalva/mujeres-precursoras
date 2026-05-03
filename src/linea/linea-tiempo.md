@@ -1,155 +1,229 @@
-# 🕰️ Línea del tiempo: Conciencia y revolución femeninas
+# 🕰️ Línea del tiempo completa: Conciencia y revolución femeninas
 
 > Basado en el temario del curso *“Conciencia y revolución femeninas: mujeres precursoras acalladas en la historia”* 
 
 ---
 
-## 🌍 PREHISTORIA Y NEOLÍTICO (antes de la civilización)
+# 🌍 ORÍGENES: CONCIENCIA FEMENINA PRIMORDIAL (Prehistoria – Neolítico)
 
-* Culto a la **Gran Diosa**: sociedades con estructuras matriarcales.
-* Representaciones arqueológicas de divinidades femeninas.
-* Interpretación moderna: **Marija Gimbutas** → lo femenino como eje civilizatorio.
+* Culto a la **Gran Diosa** → fertilidad, vida, transformación.
+* Sociedades con estructuras **matriarcales o matricéntricas**.
+* Interpretación moderna (Marija Gimbutas): lo femenino como base civilizatoria.
 
 ---
 
-## 🏺 ANTIGÜEDAD (c. 2300 a.C. – 400 d.C.)
+# 🏺 ANTIGÜEDAD: PRIMERAS VOCES FEMENINAS (2300 a.C. – 400 d.C.)
 
-### ✍️ c. 2285–2250 a.C. — Enheduana (Sumeria)
+## ✍️ Enheduana (c. 2285–2250 a.C., Sumeria)
 
-* Primera autora conocida de la historia.
+* Primera autora de la historia.
 * Primer texto firmado individualmente.
 
-### 🎭 c. 650–580 a.C. — Safo de Mitilene (Grecia)
+## 🎭 Safo de Mitilene (c. 650–580 a.C., Grecia)
 
-* Figura clave del pensamiento y poesía femenina.
-* Precursoras del pensamiento filosófico femenino.
+* Figura central del pensamiento y poesía femenina.
+* **Origen del linaje intelectual femenino**.
 
-### 🧠 c. 470–400 a.C. — Aspasia de Mileto
+## 🧠 Hijas de Safo
 
-* Maestra de retórica y estratega.
-* Símbolo de persecución contra mujeres intelectuales.
-
-### 🧠 c. 346–300 a.C. — Hiparquía
+### Hiparquía (c. 346–300 a.C.)
 
 * Filósofa cínica.
-* Ruptura con normas sociales y de género.
+* Rechazo radical de normas sociales y de género.
 
-### ✝️ Siglo I — María Magdalena
+### Aspasia de Mileto (c. 470–400 a.C.)
 
-* Figura clave del cristianismo primitivo.
-* Posteriormente tergiversada por estructuras patriarcales.
+* Intelectual, estratega y maestra de retórica.
+* Invisibilización del pensamiento femenino tras figuras masculinas.
 
 ---
 
-## 🏛️ EDAD MEDIA (c. 500 – 1500)
+# ✝️ PROTOCRISTIANISMO (Siglos I–III)
 
-### 🎼 810–867 — Kassia
+## María Magdalena
 
-* Primera compositora con obra conservada.
+* Figura de autoridad espiritual.
+* Posteriormente deslegitimada por el orden patriarcal.
 
-### 🏥 1050–1100 — Trota de Salerno
+## Mujeres evangelizadoras
+
+* Tecla, María de Nazareth.
+* Liderazgo femenino en primeras comunidades cristianas.
+
+---
+
+# 🏛️ EDAD MEDIA: RESISTENCIA DESDE LO INVISIBLE (500–1500)
+
+## 🎼 Kassia (810–867, Constantinopla)
+
+* Primera compositora con notación conservada.
+* Resistencia frente al poder imperial.
+
+---
+
+## 🏥 Trota de Salerno (c. 1050–1100)
 
 * Primera ginecóloga documentada.
-* Tratados médicos desde perspectiva femenina.
-
-### 🎶 1098–1179 — Hildegarda de Bingen
-
-* Escritora, médica, compositora y mística.
-* Figura clave en monasterios como espacios de poder femenino.
-
-### 📚 1125–1195 — Herrada de Landsberg
-
-* Autora de la primera enciclopedia escrita por mujeres (*Hortus Deliciarum*).
-
-### 🎨 Siglos X–XV — Iluminadoras medievales
-
-* Mujeres artistas en manuscritos iluminados.
-* Invisibilizadas por el dominio masculino del scriptorium.
-
-### 🎵 Siglos XII–XIII — Trobairitz
-
-* Poetas y músicas provenzales.
-* Subversión del amor cortés patriarcal.
-
-### 👩‍👩‍👧 Siglos XII–XIII — Beguinas
-
-* Comunidades femeninas autónomas.
-* Perseguidas por la Inquisición.
+* Medicina desde perspectiva femenina.
 
 ---
 
-## 🏰 TRANSICIÓN MEDIEVAL–RENACIMIENTO
+## 🎶 Hildegarda de Bingen (1098–1179)
 
-### ✍️ 1364–1430 — Christine de Pizan
+* Mística, compositora, científica.
+* Monasterios: espacios de control y poder femenino.
+
+---
+
+## 📚 Herrada de Landsberg (1125–1195)
+
+* Autora de *Hortus Deliciarum*.
+* Primera enciclopedia realizada por mujeres.
+* Producción colectiva femenina en espacios de clausura.
+
+---
+
+## 🎨 SIGLOS X–XV — ILUMINADORAS MEDIEVALES
+
+* Mujeres creadoras de manuscritos iluminados.
+* Excluidas del *scriptorium* masculino.
+* Evidencia arqueológica: lapislázuli en huesos.
+
+### Ejemplos:
+
+* Guda
+* Ende
+* Anastasia
+* Clarisia
+* Diemudis
+* María Albizzi
+
+---
+
+## 🎵 SIGLOS XII–XIII — TROBAIRITZ
+
+* Juglaresas y trovadoras provenzales.
+* Ruptura del modelo de amor cortés heteropatriarcal.
+* Producción poética femenina (cansó, trobar leu, trobar clus).
+
+### Figuras:
+
+* Beatriz de Día
+* Tibors de Sarenom
+* Alamanda de Castelnau
+* Azalais de Porcairagues
+* Maria de Ventadorn
+
+---
+
+## 👩‍👩‍👧 SIGLOS XII–XIII — BEGUINAS
+
+* Comunidades autónomas de mujeres.
+* Vida espiritual e intelectual fuera del control masculino.
+* Perseguidas por la Iglesia.
+
+### Figuras:
+
+* Hadewijch de Amberes
+* Matilde de Magdeburgo
+* Beatriz de Nazareth
+* Marguerite de Porete
+
+---
+
+## 👩‍⚕️ COMUNIDADES DE SORORIDAD
+
+### Matronas romanas (s. IV)
+
+* Redes femeninas de cuidado, conocimiento y espiritualidad.
+
+### Clara de Asís (1194–1253)
+
+* Primera regla monástica femenina.
+* Organización de vida comunitaria entre mujeres.
+
+---
+
+# ⚔️ TRANSICIÓN Y QUIEBRE HISTÓRICO
+
+## ✍️ Christine de Pizan (1364–1430)
 
 * Primera escritora profesional.
 * Inicia **La Querella de las Mujeres**.
-* Defiende educación y voz pública femenina.
-
-### 🔥 1412–1431 — Juana de Arco
-
-* Símbolo de lucha femenina.
-* Ejecutada → ejemplo de violencia institucional contra mujeres.
+* Defensa de educación y voz pública femenina.
 
 ---
 
-## 🎓 RENACIMIENTO Y HUMANISMO (s. XV–XVI)
+## 🔥 Juana de Arco (1412–1431)
 
-### 👩‍🎓 Puellae Doctae
+* Liderazgo militar femenino.
+* Ejecución como castigo a la autonomía.
 
-* Mujeres intelectuales humanistas.
-* Ejemplos:
+---
 
-  * Beatriz Galindo
-  * Teresa de Cartagena
+# 🎓 RENACIMIENTO Y HUMANISMO (s. XV–XVI)
 
-### 📖 1565–1645 — Marie de Gournay
+## 👩‍🎓 Puellae Doctae
+
+* Mujeres intelectuales del humanismo.
+
+Ejemplos:
+
+* Beatriz Galindo
+* Teresa de Cartagena
+
+## 📖 Marie de Gournay (1565–1645)
 
 * Defensa de la igualdad entre hombres y mujeres.
 
 ---
 
-## 🇲🇽 SIGLO XVII
+# 🇲🇽 SIGLO XVII
 
-### ✒️ Juana Inés de la Cruz
+## ✒️ Juana Inés de la Cruz
 
-* Intelectual novohispana.
-* Defensa del derecho femenino al conocimiento.
-
----
-
-## 🔥 CONTRARREFORMA Y PERSECUCIÓN (s. XV–XVII)
-
-* **Malleus Maleficarum (Martillo de las brujas)**:
-
-  * Manual de persecución y tortura contra mujeres.
-* Caza de brujas:
-
-  * Control social y represión de lo femenino.
+* Defensa del conocimiento femenino.
+* Crítica a estructuras patriarcales.
 
 ---
 
-## 🧠 SIGLO XX — REINTERPRETACIÓN Y TEORÍA
+# 🔥 PERSECUCIÓN SISTEMÁTICA (s. XV–XVII)
 
-### 🏺 Marija Gimbutas
+## 🧨 Caza de brujas
 
-* Relectura del pasado desde lo femenino.
-* Revalorización de culturas matriarcales.
+* Eliminación de mujeres sabias y autónomas.
 
-### 📖 Simone de Beauvoir
+## 📕 Malleus Maleficarum
 
-* Crítica histórica a la opresión femenina.
+* Tratado ideológico de control sobre la mujer.
 
 ---
 
-## 🔮 CONTEMPORANEIDAD
+# ⚖️ SIGLO XVIII — NACIMIENTO DEL FEMINISMO
 
-* Reconstrucción de la historia desde perspectiva de género.
-* Recuperación de figuras femeninas invisibilizadas.
-* Concepto de **continuum histórico de conciencia femenina**.
+## ⚔️ Olympe de Gouges (1748–1793)
+
+* Declaración de los derechos de la mujer.
+* Ejecutada durante la Revolución Francesa.
+
+## 📚 Mary Wollstonecraft (1759–1797)
+
+* Vindicación de los derechos de la mujer.
+
+---
+
+# 🧠 SIGLO XX — RELECTURA HISTÓRICA
+
+## 🏺 Marija Gimbutas
+
+* Reinterpretación de culturas prehistóricas.
+
+## 📖 Simone de Beauvoir
+
+* Crítica estructural a la opresión femenina.
 
 ---
 
 ## 🧩 IDEA CENTRAL DE LA LÍNEA DEL TIEMPO
 
-> La historia de las mujeres no es fragmentada, sino un **continuum de resistencia, pensamiento y creación**, constantemente invisibilizado y reescrito.
+> La historia de las mujeres es un **continuum de resistencia, pensamiento y creación**.
