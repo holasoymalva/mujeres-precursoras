@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
             period: "TRANSICIÓN MEDIEVAL (S. XV)",
             title: "Juana de Arco",
             desc: "<ul><li>Liderazgo militar y transgresión radical de todos los roles de género de su época.</li><li>Ejecutada como castigo explícito a su autonomía política y espiritual.</li></ul>",
-            image: null,
+            image: "src/linea/linea-131.avif",
             region: "Domrémy, Francia · 1412 – 1431",
             ideas: [
                 "Lideró el ejército francés a los 17 años guiada por 'voces divinas', rompiendo todos los roles de género vigentes: ni monja, ni esposa, ni campesina sumisa.",
