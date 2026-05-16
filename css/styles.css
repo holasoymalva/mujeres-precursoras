@@ -266,21 +266,192 @@ body, html {
 .node-content {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
-    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     text-align: left;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.node-content img {
+.node-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(140, 82, 255, 0.18);
+}
+
+/* Don't lift when already showing back content */
+.node-content.flipped:hover {
+    transform: translateY(0);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* --- CARD FRONT --- */
+.card-front {
+    padding: 22px;
+    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.card-front img {
     width: 100%;
-    height: 180px;
+    height: 155px;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 15px;
-    display: block; /* Ocultaremos esto si no hay imagen en JS */
+    margin-bottom: 14px;
+    display: block;
+}
+
+/* Indicador de que la carta es interactiva */
+.flip-hint {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 14px;
+    font-family: sans-serif;
+    font-size: 0.72rem;
+    color: var(--highlight-color);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.flip-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--highlight-color);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse-dot 2.2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* --- CARD BACK --- */
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(148deg, #2a0f5e 0%, #4a1fa0 55%, #6b38c8 100%);
+    color: #f0eaff;
+    padding: 20px 22px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+    pointer-events: none;
+    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    /* Thin custom scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+.card-back::-webkit-scrollbar {
+    width: 4px;
+}
+.card-back::-webkit-scrollbar-track {
+    background: transparent;
+}
+.card-back::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+/* Flipped state */
+.node-content.flipped .card-front {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.97);
+    pointer-events: none;
+}
+
+.node-content.flipped .card-back {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* Back card typography */
+.back-title {
+    font-size: 1.05rem;
+    font-style: italic;
+    font-family: var(--font-serif);
+    color: #d4b8ff;
+    margin: 0 0 4px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    line-height: 1.3;
+}
+
+.back-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.back-section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.back-label {
+    font-size: 0.65rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: #b899f5;
+    font-weight: 700;
+}
+
+.back-text {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: #ede5ff;
+    font-family: var(--font-serif);
+    font-style: italic;
+}
+
+.back-list {
+    margin: 0;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.back-list li {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: #ede5ff;
+    font-family: var(--font-serif);
+}
+
+.flip-back-hint {
+    margin-top: auto;
+    padding-top: 10px;
+    font-family: sans-serif;
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .node-period {
@@ -410,19 +581,31 @@ body, html {
 
     /* Ajustes para los nodos de la línea del tiempo */
     .timeline-node {
-        width: 280px;
+        width: 270px;
     }
 
-    .node-content {
+    .card-front {
         padding: 15px;
     }
 
+    .card-front img {
+        height: 120px;
+    }
+
     .node-title {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 
     .node-desc {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
+    }
+
+    .card-back {
+        padding: 15px;
+    }
+
+    .back-list li {
+        font-size: 0.76rem;
     }
 
     /* Panel final optimizado para móvil */
