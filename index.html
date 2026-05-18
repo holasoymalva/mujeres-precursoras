@@ -5,17 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Precursoras del Feminismo</title>
     <meta name="description" content="Una línea del tiempo interactiva sobre las precursoras del feminismo.">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="scroll-body">
     <!-- El contenedor que da la altura real para hacer scroll vertical -->
     <div id="scroll-proxy"></div>
 
+    <!-- Mapa vintage fijo en el fondo (visible durante la línea del tiempo) -->
+    <div id="vintage-map-container">
+        <div id="vintage-map"></div>
+        <div class="map-vignette"></div>
+        <div id="map-location-label">
+            <div class="map-label-period"></div>
+            <div class="map-label-place"></div>
+            <div class="map-label-date"></div>
+        </div>
+        <div class="map-compass">
+            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="30" r="28" stroke="rgba(140,82,255,0.4)" stroke-width="1.5"/>
+                <circle cx="30" cy="30" r="20" stroke="rgba(140,82,255,0.2)" stroke-width="1"/>
+                <polygon points="30,4 33,28 30,30 27,28" fill="rgba(140,82,255,0.7)"/>
+                <polygon points="30,56 33,32 30,30 27,32" fill="rgba(43,43,43,0.35)"/>
+                <polygon points="56,30 32,27 30,30 32,33" fill="rgba(43,43,43,0.35)"/>
+                <polygon points="4,30 28,27 30,30 28,33" fill="rgba(43,43,43,0.35)"/>
+                <circle cx="30" cy="30" r="3" fill="rgba(140,82,255,0.8)"/>
+                <text x="30" y="13" text-anchor="middle" font-size="6" fill="rgba(140,82,255,0.8)" font-family="serif">N</text>
+                <text x="30" y="52" text-anchor="middle" font-size="5" fill="rgba(43,43,43,0.5)" font-family="serif">S</text>
+                <text x="49" y="32" text-anchor="middle" font-size="5" fill="rgba(43,43,43,0.5)" font-family="serif">E</text>
+                <text x="11" y="32" text-anchor="middle" font-size="5" fill="rgba(43,43,43,0.5)" font-family="serif">O</text>
+            </svg>
+        </div>
+    </div>
+
     <!-- El contenedor fijo a la pantalla -->
     <main id="app" class="fixed-container">
         <!-- El wrapper que se moverá de derecha a izquierda -->
         <div id="horizontal-wrapper" class="horizontal-wrapper">
-            
+
             <!-- 1. Pantalla de Introducción -->
             <section id="intro-section" class="panel intro-section">
                 <div id="image-container" class="image-container"></div>
@@ -30,7 +58,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <!-- 2. Línea del Tiempo -->
             <section class="panel timeline-container">
                 <!-- Se inyectarán dinámicamente los nodos aquí -->
@@ -49,11 +77,11 @@
                     </svg>
                 </div>
             </section>
-            
+
             <!-- Panel final con la idea central -->
             <section id="final-section" class="panel final-panel">
                 <div id="final-image-container" class="image-container"></div>
-                
+
                 <div class="final-content blur-on-scroll">
                     <div id="dynamic-phrase-container" class="dynamic-phrase-container">
                         <div class="phrase-quote phrase-hidden" id="phrase-quote"></div>
@@ -65,6 +93,8 @@
         </div>
     </main>
 
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

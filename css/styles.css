@@ -31,6 +31,7 @@ body, html {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    z-index: 2; /* encima del mapa vintage (z-index: 1) */
 }
 
 /* Wrapper que se mueve de derecha a izquierda */
@@ -39,7 +40,7 @@ body, html {
     height: 100vh;
     width: max-content;
     will-change: transform;
-    background-color: var(--bg-color); /* Fondo base consistente para todas las secciones */
+    /* Sin fondo: cada sección gestiona el suyo para que el mapa sea visible en la timeline */
 }
 
 /* Paneles individuales */
@@ -55,8 +56,156 @@ body, html {
 
 /* --- SECCIÓN DE INTRODUCCIÓN --- */
 .intro-section {
-    /* Resplandor central sutil que se desvanece antes de llegar a los bordes */
-    background: radial-gradient(circle at center, #ffffff 0%, transparent 80%);
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at center, #ffffff 0%, transparent 75%);
+}
+
+/* --- PANEL FINAL --- */
+.final-panel {
+    background-color: var(--bg-color);
+}
+
+/* =========================================
+   MAPA VINTAGE DE FONDO
+   ========================================= */
+
+#vintage-map-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1;           /* debajo de .fixed-container (z-index: 2) */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.4s ease;
+}
+
+#vintage-map-container.map-visible {
+    opacity: 1;
+}
+
+#vintage-map {
+    width: 100%;
+    height: 100%;
+    /* Filtro para aspecto de mapa vintage / pergamino */
+    filter: sepia(0.55) saturate(0.55) brightness(1.12) contrast(0.88) hue-rotate(-6deg);
+}
+
+/* Vignette y capa de pergamino encima del mapa */
+.map-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at center, transparent 40%, rgba(196, 164, 112, 0.22) 100%),
+        linear-gradient(180deg, rgba(246,245,239,0.12) 0%, transparent 40%, transparent 60%, rgba(246,245,239,0.15) 100%);
+    z-index: 2;
+}
+
+/* Panel de ubicación actual */
+#map-location-label {
+    position: absolute;
+    bottom: 34px;
+    left: 34px;
+    z-index: 10;
+    background: rgba(246, 245, 239, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 13px 18px 12px;
+    border-radius: 10px;
+    border-left: 3px solid var(--highlight-color);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    min-width: 200px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#map-location-label.label-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#map-location-label.label-updating {
+    opacity: 0.5;
+    transform: translateY(4px);
+}
+
+.map-label-period {
+    font-family: sans-serif;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--highlight-color);
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.map-label-place {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.map-label-date {
+    font-family: var(--font-serif);
+    font-size: 0.78rem;
+    color: #6a6a6a;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+/* Marcador vintage pulsante */
+.v-marker-outer {
+    width: 30px;
+    height: 30px;
+    border: 2.5px solid var(--highlight-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(140, 82, 255, 0.12);
+    animation: map-marker-pulse 2.5s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(140, 82, 255, 0.5);
+}
+
+.v-marker-inner {
+    width: 9px;
+    height: 9px;
+    background: var(--highlight-color);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(140, 82, 255, 0.6);
+}
+
+@keyframes map-marker-pulse {
+    0%   { box-shadow: 0 0 0 0   rgba(140, 82, 255, 0.5); }
+    60%  { box-shadow: 0 0 0 14px rgba(140, 82, 255, 0); }
+    100% { box-shadow: 0 0 0 0   rgba(140, 82, 255, 0); }
+}
+
+/* Brújula decorativa */
+.map-compass {
+    position: absolute;
+    bottom: 34px;
+    right: 34px;
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+    opacity: 0.75;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+}
+
+/* Ocultar controles nativos de Leaflet que no necesitamos */
+.leaflet-control-attribution {
+    font-size: 0.55rem !important;
+    background: rgba(246, 245, 239, 0.7) !important;
+    color: #888 !important;
+}
+
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+    background: none !important;
+    border: none !important;
 }
 
 .intro-text {
@@ -485,6 +634,7 @@ body, html {
 /* --- FINAL PANEL --- */
 .final-panel {
     width: 100vw;
+    /* background-color set at top with intro-section */
 }
 
 .final-content {
@@ -625,5 +775,21 @@ body, html {
     /* Evitar que las imágenes tapen demasiado el texto final en móvil */
     #final-image-container {
         opacity: 0.5;
+    }
+
+    /* Mapa y etiqueta de ubicación en móvil */
+    #map-location-label {
+        bottom: 16px;
+        left: 16px;
+        padding: 10px 14px;
+        min-width: 160px;
+    }
+
+    .map-label-place {
+        font-size: 0.85rem;
+    }
+
+    .map-compass {
+        display: none; /* La brújula se oculta en pantallas pequeñas */
     }
 }

@@ -428,6 +428,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+    // Coordenadas geográficas para el mapa vintage (lat, lng, zoom, lugar, fecha)
+    const mapCoords = [
+        { lat: 47.80, lng: 14.00, zoom: 5, place: "Europa Central y Oriente Próximo",    date: "40.000 – 3.000 a.C." },
+        { lat: 30.96, lng: 46.10, zoom: 6, place: "Ur, Sumeria · actual Irak",            date: "c. 2285 – 2250 a.C." },
+        { lat: 39.10, lng: 26.30, zoom: 7, place: "Mitilene, Lesbos · Grecia",            date: "c. 630 – 570 a.C." },
+        { lat: 37.97, lng: 23.73, zoom: 7, place: "Atenas · Grecia",                      date: "c. 470 – 400 a.C." },
+        { lat: 40.86, lng: 25.87, zoom: 6, place: "Maroneia, Tracia → Atenas",            date: "c. 346 – 300 a.C." },
+        { lat: 31.77, lng: 35.23, zoom: 7, place: "Jerusalén · Palestina",                date: "Siglos I–III d.C." },
+        { lat: 41.01, lng: 28.97, zoom: 7, place: "Constantinopla · actual Estambul",     date: "c. 805 – 865 d.C." },
+        { lat: 40.68, lng: 14.76, zoom: 8, place: "Salerno · Italia del Sur",             date: "c. 1050 – 1100 d.C." },
+        { lat: 49.97, lng:  7.90, zoom: 7, place: "Bingen am Rhein · Renania",            date: "1098 – 1179 d.C." },
+        { lat: 43.83, lng:  4.36, zoom: 7, place: "Provenza · Francia",                   date: "Siglos XI–XIV" },
+        { lat: 51.20, lng:  3.22, zoom: 7, place: "Brujas · Países Bajos",                date: "Siglos XII–XIV" },
+        { lat: 48.86, lng:  2.35, zoom: 8, place: "París · Francia",                      date: "1364 – c. 1430" },
+        { lat: 48.43, lng:  5.67, zoom: 8, place: "Domrémy-la-Pucelle · Lorena",          date: "1412 – 1431" },
+        { lat: 39.86, lng: -4.02, zoom: 6, place: "Toledo · Corona de Castilla",          date: "Siglos XV–XVII" },
+        { lat: 19.43, lng:-99.13, zoom: 6, place: "Ciudad de México · Nueva España",      date: "1648 – 1695" },
+        { lat: 51.16, lng: 10.45, zoom: 5, place: "Europa Central y Occidental",          date: "1450 – 1750" }
+    ];
+
     const timelineTrack = document.getElementById('timeline-track');
 
     // Inyectar nodos al DOM con estructura de carta interactiva
@@ -435,6 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isTop = index % 2 === 0;
         const node = document.createElement('div');
         node.className = `timeline-node ${isTop ? 'top' : 'bottom'}`;
+        node.dataset.index = index;
 
         let imgHtml = '';
         if (item.image) {
@@ -498,12 +519,94 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* =========================================
-       3. LÓGICA DEL SCROLL HORIZONTAL
+       3. MAPA VINTAGE INTERACTIVO
+       ========================================= */
+    const mapContainerEl   = document.getElementById('vintage-map-container');
+    const mapLabelEl       = document.getElementById('map-location-label');
+    const mapLabelPeriod   = document.querySelector('.map-label-period');
+    const mapLabelPlace    = document.querySelector('.map-label-place');
+    const mapLabelDate     = document.querySelector('.map-label-date');
+
+    let vintageMap      = null;
+    let vintageMarker   = null;
+    let currentMapIdx   = -1;
+
+    // Inicializar Leaflet solo si la librería está disponible
+    if (typeof L !== 'undefined' && document.getElementById('vintage-map')) {
+        vintageMap = L.map('vintage-map', {
+            zoomControl:        false,
+            attributionControl: false,   // Usaremos atribución personalizada
+            dragging:           false,
+            touchZoom:          false,
+            doubleClickZoom:    false,
+            scrollWheelZoom:    false,
+            boxZoom:            false,
+            keyboard:           false,
+            tap:                false
+        });
+
+        // Tiles CartoDB Voyager — aspecto cartográfico cálido, sin API key
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            subdomains: 'abcd',
+            maxZoom: 13
+        }).addTo(vintageMap);
+
+        // Vista inicial: Mar Mediterráneo
+        vintageMap.setView([40.0, 18.0], 4);
+
+        // Icono de marcador vintage personalizado
+        const markerIcon = L.divIcon({
+            className:  '',
+            html:       '<div class="v-marker-outer"><div class="v-marker-inner"></div></div>',
+            iconSize:   [30, 30],
+            iconAnchor: [15, 15]
+        });
+
+        vintageMarker = L.marker([40.0, 18.0], { icon: markerIcon, interactive: false })
+            .addTo(vintageMap);
+
+        // Forzar recalculo del tamaño después de que el DOM esté estabilizado
+        setTimeout(() => vintageMap.invalidateSize(), 400);
+    }
+
+    function updateMapLocation(index) {
+        if (!vintageMap || currentMapIdx === index) return;
+        currentMapIdx = index;
+
+        const coord = mapCoords[index];
+        if (!coord) return;
+
+        // Mover marcador
+        vintageMarker.setLatLng([coord.lat, coord.lng]);
+
+        // Animar vuelo al nuevo lugar
+        vintageMap.flyTo([coord.lat, coord.lng], coord.zoom, {
+            duration: 1.9,
+            easeLinearity: 0.22
+        });
+
+        // Actualizar etiqueta de ubicación con mini-fade
+        if (mapLabelEl) {
+            mapLabelEl.classList.add('label-updating');
+            setTimeout(() => {
+                mapLabelPeriod.textContent = timelineData[index].period;
+                mapLabelPlace.textContent  = coord.place;
+                mapLabelDate.textContent   = coord.date;
+                mapLabelEl.classList.remove('label-updating');
+                mapLabelEl.classList.add('label-visible');
+            }, 260);
+        }
+    }
+
+    /* =========================================
+       4. LÓGICA DEL SCROLL HORIZONTAL
        ========================================= */
     const scrollProxy = document.getElementById('scroll-proxy');
     const horizontalWrapper = document.getElementById('horizontal-wrapper');
     const timelineNodes = document.querySelectorAll('.timeline-node');
     const finalContent = document.querySelector('.final-content');
+    const introSectionEl = document.getElementById('intro-section');
+    const finalSectionEl = document.getElementById('final-section');
 
     function updateHeights() {
         horizontalWrapper.style.width = 'max-content';
@@ -554,41 +657,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
+        const vw = window.innerWidth;
 
         horizontalWrapper.style.transform = `translateX(-${scrollY}px)`;
 
+        // --- Revelar línea ondulada ---
         const maskPath = document.getElementById('mask-path');
         if (maskPath) {
             const length = maskPath.getTotalLength();
-            let revealWidth = scrollY - window.innerWidth + (window.innerWidth * 0.8);
+            let revealWidth = scrollY - vw + (vw * 0.8);
             if (revealWidth < 0) revealWidth = 0;
-
             const trackWidth = timelineTrack.scrollWidth;
             let ratio = revealWidth / trackWidth;
             if (ratio > 1) ratio = 1;
-
             maskPath.style.strokeDashoffset = length - (length * ratio);
         }
+
+        // --- Calcular opacidad del mapa según qué sección está visible ---
+        if (mapContainerEl && introSectionEl && finalSectionEl) {
+            const introRight = introSectionEl.getBoundingClientRect().right;
+            const finalLeft  = finalSectionEl.getBoundingClientRect().left;
+
+            // Fade in a medida que la intro sale por la izquierda
+            const fadeIn  = 1 - Math.max(0, Math.min(1, (introRight - vw * 0.15) / (vw * 0.75)));
+            // Fade out a medida que el panel final entra por la derecha
+            const fadeOut = Math.max(0, Math.min(1, (finalLeft - vw * 0.1) / (vw * 0.7)));
+
+            const mapOpacity = Math.min(fadeIn, fadeOut);
+            mapContainerEl.style.opacity = mapOpacity;
+
+            // Activar/desactivar clase para la etiqueta de ubicación
+            if (mapOpacity > 0.3) {
+                mapContainerEl.classList.add('map-visible');
+            } else {
+                mapContainerEl.classList.remove('map-visible');
+                if (mapLabelEl) mapLabelEl.classList.remove('label-visible');
+            }
+        }
+
+        // --- Detectar la tarjeta más cercana al centro y actualizar el mapa ---
+        let closestIdx  = -1;
+        let closestDist = Infinity;
 
         timelineNodes.forEach((node) => {
             const rect = node.getBoundingClientRect();
             const nodeScreenX = rect.left + rect.width / 2;
 
-            if (nodeScreenX < window.innerWidth * 0.1) {
+            if (nodeScreenX < vw * 0.1) {
                 node.classList.remove('in-view');
                 node.classList.add('passed');
-            } else if (nodeScreenX < window.innerWidth * 0.9) {
+            } else if (nodeScreenX < vw * 0.9) {
                 node.classList.add('in-view');
                 node.classList.remove('passed');
+
+                // Determinar cuál está más cerca del centro
+                const dist = Math.abs(nodeScreenX - vw / 2);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closestIdx  = parseInt(node.dataset.index, 10);
+                }
             } else {
                 node.classList.remove('in-view');
                 node.classList.remove('passed');
             }
         });
 
+        // Actualizar mapa solo si hay una tarjeta en vista
+        if (closestIdx >= 0) {
+            updateMapLocation(closestIdx);
+        }
+
+        // --- Panel final ---
         if (finalContent) {
             const finalRect = finalContent.getBoundingClientRect();
-            if (finalRect.left < window.innerWidth * 0.8) {
+            if (finalRect.left < vw * 0.8) {
                 finalContent.classList.add('in-view');
                 startFinalPhrases();
             } else {
@@ -598,7 +740,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* =========================================
-       4. LÓGICA DE FRASES DINÁMICAS (FINAL)
+       5. LÓGICA DE FRASES DINÁMICAS (FINAL)
        ========================================= */
     const finalPhrases = [
         "\"El hombre define a la mujer no en sí misma, sino con relación a él.\" – Simone de Beauvoir (1949)",
